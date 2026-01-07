@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa de Açúcar - Planner Anual | Edição 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa-brigadeiro: #E91E63;
+            --rosa-escuro: #C2185B;
+            --coral: #FF7043;
+            --caramelo: #FFB74D;
+            --chocolate-leite: #8B6F47;
+            --fundo-claro: #FFF8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFE5E5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .brand-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--rosa-escuro);
+            margin-bottom: 5px;
+        }
+
+        .brand-subtitle {
+            font-size: 1.1rem;
+            color: var(--chocolate-leite);
+            font-weight: 600;
+        }
+
+        .edition-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--rosa-escuro));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--chocolate-leite);
+            line-height: 1.6;
+        }
+
+        .welcome-text h2 {
+            color: var(--rosa-escuro);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--chocolate-leite);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--rosa-brigadeiro);
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #BDBDBD;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--rosa-escuro));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .benefits-list {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #F0F0F0;
+        }
+
+        .benefits-list h3 {
+            color: var(--rosa-escuro);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--chocolate-leite);
+        }
+
+        .benefit-item::before {
+            content: "✓";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--rosa-brigadeiro);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 10px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--rosa-brigadeiro);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #FFEBEE;
+            color: #C62828;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        .success-message {
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .privacy-note {
+            font-size: 0.85rem;
+            color: #9E9E9E;
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 600px) {
+            .auth-container {
+                padding: 30px 20px;
+            }
+
+            .brand-name {
+                font-size: 2rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo-container">
+            <img src="logo-caixa-de-acucar.png" alt="Caixa de Açúcar">
+            <div class="brand-name">Caixa de Açúcar</div>
+            <div class="brand-subtitle">Planner Anual</div>
+            <div class="edition-badge">★ EDIÇÃO 2026 ★</div>
+        </div>
+
+        <div class="welcome-text">
+            <h2>Bem-vinda!</h2>
+            <p>Faça seu cadastro gratuito para acessar o planner completo com 70+ datas lucrativas e guias estratégicos.</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <form id="authForm">
+            <div class="form-group">
+                <label for="name">Nome Completo *</label>
+                <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp *</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="city">Cidade/Estado</label>
+                <input type="text" id="city" name="city" placeholder="São Paulo/SP">
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Acessar Planner Gratuito
+            </button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Criando seu acesso...</p>
+        </div>
+
+        <div class="privacy-note">
+            🔒 Seus dados estão seguros. Usaremos apenas para enviar conteúdos exclusivos sobre confeitaria.
+        </div>
+    </div>
+
+    <script>
+        // IMPORTANTE: Substitua pela URL do seu Google Apps Script
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJPJAz1zD2v-8i4x7BUicuqfUg-1RsTr71bUyLYvdVyYZWib7GohjTEVqd4-Rsg66x4w/exec';
+                            
+        const form = document.getElementById('authForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        // Verificar se já está autenticado
+        if (localStorage.getItem('caixaDeAcucarAuth')) {
+            window.location.href = 'welcome.html';
+        }
+
+        // Máscara de WhatsApp
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            if (value.length > 10) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else if (value.length > 0) {
+                value = value.replace(/^(\d*)/, '($1');
+            }
+            
+            e.target.value = value;
+        });
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Limpar mensagens
+            errorMessage.classList.remove('active');
+            successMessage.classList.remove('active');
+
+            // Validações
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const city = document.getElementById('city').value.trim();
+
+            if (!name || !email || !whatsapp) {
+                showError('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                showError('Por favor, insira um e-mail válido.');
+                return;
+            }
+
+            // Mostrar loading
+            form.style.display = 'none';
+            loading.classList.add('active');
+            submitBtn.disabled = true;
+
+            // Preparar dados
+            const formData = {
+                name: name,
+                email: email,
+                whatsapp: whatsapp,
+                city: city || 'Não informado',
+                timestamp: new Date().toLocaleString('pt-BR')
+            };
+
+            try {
+                // Enviar para Google Sheets
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Importante para Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Com no-cors, não conseguimos ler a resposta, mas se não der erro, funcionou
+                // Salvar no localStorage
+                localStorage.setItem('caixaDeAcucarAuth', JSON.stringify({
+                    name: name,
+                    email: email,
+                    timestamp: new Date().toISOString()
+                }));
+
+                // Mostrar sucesso
+                loading.classList.remove('active');
+                successMessage.textContent = `Bem-vinda, ${name.split(' ')[0]}! Redirecionando...`;
+                successMessage.classList.add('active');
+
+                // Redirecionar após 1.5 segundos
+                setTimeout(() => {
+                    window.location.href = 'welcome.html';
+                }, 1500);
+
+            } catch (error) {
+                console.error('Erro:', error);
+                loading.classList.remove('active');
+                form.style.display = 'block';
+                submitBtn.disabled = false;
+                showError('Ops! Algo deu errado. Tente novamente.');
+            }
+        });
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.add('active');
+            setTimeout(() => {
+                errorMessage.classList.remove('active');
+            }, 5000);
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+</body>
+</html>

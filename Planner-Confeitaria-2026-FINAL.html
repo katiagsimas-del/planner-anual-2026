@@ -1,0 +1,3269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa de Açúcar - Planner Anual | Edição 2026 | Ká Simas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;600&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Paleta Ká Simas */
+            --rosa-morango: #FFB6C1;
+            --rosa-cupcake: #FFD1DC;
+            --rosa-brigadeiro: #F4A5B9;
+            --rosa-escuro: #DB7093;
+            --chocolate-escuro: #5D4037;
+            --chocolate-leite: #8D6E63;
+            --caramelo: #C19A6B;
+            --bege-creme: #F5E6D3;
+            --champagne: #F7E7CE;
+            --marshmallow: #FFF5F7;
+            --canela: #D2691E;
+            --mocha: #9B6B4A;
+            --verde-menta: #98D8C8;
+            --lavanda: #E6D5E8;
+            --coral: #FF6B7A;
+            --amarelo-baunilha: #FFF8DC;
+            
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Cormorant Garamond', serif;
+            --font-sans: 'Raleway', sans-serif;
+            
+            --shadow-soft: 0 4px 20px rgba(255, 182, 193, 0.2);
+            --shadow-medium: 0 8px 30px rgba(141, 110, 99, 0.25);
+            --shadow-strong: 0 12px 40px rgba(93, 64, 55, 0.3);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--marshmallow) 0%, var(--bege-creme) 100%);
+            color: var(--chocolate-escuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Profissional */
+        .header {
+            background: linear-gradient(135deg, var(--rosa-brigadeiro) 0%, var(--chocolate-leite) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-medium);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            padding: 0.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-text h1 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 0.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.95;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-icon {
+            background: rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: white;
+            color: var(--rosa-brigadeiro);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Ícone do YouTube maior para destaque */
+        .social-icon[title="YouTube"] {
+            width: 55px;
+            height: 55px;
+        }
+
+        .social-icon[title="YouTube"] img {
+            width: 36px;
+            height: 36px;
+        }
+
+        .coming-soon {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 120px;
+            width: 300px;
+            height: calc(100vh - 120px);
+            background: white;
+            box-shadow: var(--shadow-medium);
+            overflow-y: auto;
+            z-index: 50;
+            animation: slideRight 0.5s ease-out;
+            border-right: 4px solid var(--rosa-brigadeiro);
+        }
+
+        @keyframes slideRight {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: var(--champagne);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--rosa-brigadeiro);
+            border-radius: 5px;
+        }
+
+        .nav-section {
+            padding: 1.5rem;
+            border-bottom: 2px solid var(--bege-creme);
+        }
+
+        .nav-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--chocolate-escuro);
+            font-weight: 700;
+        }
+
+        .nav-item {
+            padding: 0.9rem 1.2rem;
+            margin: 0.6rem 0;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            background: var(--champagne);
+        }
+
+        .nav-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-soft);
+            background: var(--rosa-cupcake);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--chocolate-leite));
+            color: white;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .icon {
+            font-size: 1.4rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 300px;
+            padding: 3rem;
+            min-height: calc(100vh - 120px);
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border-left: 6px solid var(--rosa-brigadeiro);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .card h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--chocolate-escuro);
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--rosa-escuro);
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--chocolate-escuro);
+            margin-bottom: 1rem;
+        }
+
+        /* Month Cards Grid */
+        .month-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .month-card {
+            background: linear-gradient(135deg, white 0%, var(--champagne) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .month-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--rosa-brigadeiro), var(--chocolate-leite));
+        }
+
+        .month-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--rosa-brigadeiro);
+        }
+
+        .month-card .month-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .month-card .month-name {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--chocolate-escuro);
+            margin-bottom: 0.5rem;
+        }
+
+        .month-card .month-highlight {
+            font-size: 0.9rem;
+            color: var(--rosa-escuro);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .month-card.has-selections {
+            border-color: var(--rosa-brigadeiro);
+            background: linear-gradient(135deg, var(--rosa-cupcake) 0%, var(--champagne) 100%);
+        }
+
+        .month-card .selection-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--rosa-brigadeiro);
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Calendar Visual */
+        .calendar-visual {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .calendar-month {
+            margin-bottom: 3rem;
+        }
+
+        .calendar-month-header {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--chocolate-escuro);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--rosa-brigadeiro);
+        }
+
+        .calendar-days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day-label {
+            text-align: center;
+            font-weight: 700;
+            color: var(--chocolate-leite);
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: var(--champagne);
+            color: var(--chocolate-escuro);
+            font-weight: 600;
+            cursor: default;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day.selected {
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--rosa-escuro));
+            color: white;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .calendar-day.selected:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-strong);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--chocolate-leite);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--rosa-escuro);
+            transform: rotate(90deg);
+        }
+
+        /* Lista de datas para seleção */
+        .dates-selection-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .date-selection-item {
+            background: var(--champagne);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--rosa-brigadeiro);
+            transition: all 0.3s ease;
+        }
+
+        .date-selection-item:hover {
+            background: white;
+            transform: translateX(5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .date-selection-item label {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        .date-selection-item input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: var(--rosa-brigadeiro);
+            margin-top: 0.2rem;
+        }
+
+        .date-selection-item .date-info {
+            flex: 1;
+        }
+
+        .date-selection-item .date-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--chocolate-escuro);
+            margin-bottom: 0.3rem;
+        }
+
+        .date-selection-item .date-description {
+            font-size: 0.95rem;
+            color: var(--chocolate-leite);
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--chocolate-leite));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            text-decoration: none;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, var(--chocolate-leite), var(--chocolate-escuro));
+        }
+
+        /* Premium Cards, Info Boxes, Lists - mantidos do código anterior */
+        .premium-card {
+            background: linear-gradient(135deg, white 0%, var(--champagne) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-medium);
+            border: 3px solid var(--rosa-brigadeiro);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-badge {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 2rem 0;
+        }
+
+        .benefits-list li {
+            padding: 1rem;
+            margin: 0.8rem 0;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--rosa-brigadeiro);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .benefits-list li i {
+            color: var(--rosa-brigadeiro);
+            font-size: 1.3rem;
+            margin-top: 0.2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--rosa-escuro));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            text-decoration: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid var(--verde-menta);
+        }
+
+        .info-box.warning {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border-left-color: var(--caramelo);
+        }
+
+        .info-box.special {
+            background: linear-gradient(135deg, var(--rosa-cupcake) 0%, var(--lavanda) 100%);
+            border-left-color: var(--rosa-escuro);
+        }
+
+        ul.styled-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.styled-list li {
+            padding: 1rem;
+            margin: 0.8rem 0;
+            background: var(--champagne);
+            border-radius: 10px;
+            border-left: 4px solid var(--rosa-brigadeiro);
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+
+        ul.styled-list li:hover {
+            background: white;
+            transform: translateX(5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .export-section {
+            background: var(--champagne);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Menu Toggle Mobile */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--chocolate-leite));
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-strong);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsivo */
+        @media (max-width: 968px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                top: 200px;
+                height: calc(100vh - 200px);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .month-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+
+        
+        /* Calendário Minimalista - 12 Cards */
+        .mini-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mini-month-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border-top: 5px solid;
+        }
+
+        .mini-month-card.has-dates {
+            background: linear-gradient(135deg, var(--rosa-cupcake) 0%, white 100%);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .mini-month-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .mini-month-icon {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mini-month-name {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--chocolate-escuro);
+            margin-bottom: 1rem;
+        }
+
+        .mini-month-dates {
+            margin-top: 1rem;
+        }
+
+        .mini-date-item {
+            background: white;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--rosa-brigadeiro);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .mini-date-item:hover {
+            background: var(--rosa-cupcake);
+            transform: translateX(5px);
+        }
+
+        .mini-date-day {
+            background: var(--rosa-brigadeiro);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .mini-date-name {
+            flex: 1;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--chocolate-escuro);
+        }
+
+        .mini-month-empty {
+            text-align: center;
+            color: var(--chocolate-leite);
+            font-style: italic;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Calendário Completo 2026 */
+        .full-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .calendar-month-box {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-month-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .calendar-month-header {
+            padding: 0.8rem;
+            text-align: center;
+            color: white;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            padding: 0.5rem;
+            background: var(--champagne);
+            border-bottom: 2px solid var(--bege-creme);
+        }
+        
+        .weekday {
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--chocolate-escuro);
+            font-family: var(--font-sans);
+        }
+        
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            padding: 0.5rem;
+            gap: 0.3rem;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-family: var(--font-sans);
+        }
+        
+        .calendar-day.empty {
+            visibility: hidden;
+        }
+        
+        /* Animação de Pulso para Datas Comemorativas */
+        @keyframes datePulse {
+            0%, 100% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0);
+            }
+        }
+        
+        @keyframes dateGlow {
+            0%, 100% {
+                filter: brightness(1.2);
+            }
+            50% {
+                filter: brightness(1.5);
+            }
+        }
+        
+        .calendar-day.selected-date {
+            cursor: pointer;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 50%, #FFB6C1 100%) !important;
+            color: white !important;
+            font-weight: 700 !important;
+            animation: datePulse 2s ease-in-out infinite, dateGlow 3s ease-in-out infinite;
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calendar-day.selected-date::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+        
+        .calendar-day.selected-date:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.6);
+            animation-play-state: paused;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%) !important;
+        }
+
+        @media (max-width: 968px) {
+            .mini-calendar-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .full-calendar-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .mini-calendar-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-calendar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 182, 193, 0.4) 0%, rgba(141, 110, 99, 0.4) 100%);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Ká Simas Logo">
+                </div>
+                <div class="brand-text">
+                    <h1>Ká Simas</h1>
+                    <p>Plataforma de IA & Soluções para Confeiteiras</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/kasimasoficial/" target="_blank" class="social-icon" title="Instagram">
+                    <img src="instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/channel/UCqWcJQGAzi7XHGiH_nTkgCA" target="_blank" class="social-icon" title="YouTube">
+                    <img src="youtube-icon.png" alt="YouTube">
+                </a>
+                <a href="https://api.whatsapp.com/message/ZZ6QAO35PEP5C1?autoload=1&app_absent=0" target="_blank" class="social-icon" title="WhatsApp">
+                    <img src="whatsapp-icon.png" alt="WhatsApp">
+                </a>
+                <div class="coming-soon">
+                    <i class="fas fa-globe"></i>
+                    <span>Site em Breve</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="nav-section">
+            <h3><img src="logo-caixa-de-acucar.png" style="width: 35px; height: 35px; vertical-align: middle; margin-right: 10px;">Planner 2026</h3>
+            <div class="nav-item active" onclick="showPage('home')">
+                <span class="icon"><img src="home-icon.png" style="width: 28px; height: 28px;"></span>
+                Início
+            </div>
+            <div class="nav-item" onclick="showPage('calendario-interativo')">
+                <span class="icon"><img src="calendario-icon-1.png" style="width: 28px; height: 28px;"></span>
+                Meu Calendário
+            </div>
+            <div class="nav-item" onclick="showPage('tendencias')">
+                <span class="icon"><img src="tendencia-analise.png" style="width: 28px; height: 28px;"></span>
+                Tendências 2026
+            </div>
+            <div class="nav-item" onclick="showPage('aniversarios')">
+                <span class="icon"><img src="aniversario-bolo.png" style="width: 28px; height: 28px;"></span>
+                Aniversários
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <h3><img src="logo-caixa-de-acucar.png" style="width: 35px; height: 35px; vertical-align: middle; margin-right: 10px;">Datas Estratégicas - Guias Completos</h3>
+            <div class="nav-item" onclick="showPage('premium-pascoa')">
+                <span class="icon"><img src="premium-pascoa.png" style="width: 28px; height: 28px;"></span>
+                Páscoa 2026
+            </div>
+            <div class="nav-item" onclick="showPage('premium-maes')">
+                <span class="icon"><img src="premium-diadasmaes.png" style="width: 28px; height: 28px;"></span>
+                Dia das Mães 2026
+            </div>
+            <div class="nav-item" onclick="showPage('premium-blackfriday')">
+                <span class="icon"><img src="premium-blackfriday.png" style="width: 28px; height: 28px;"></span>
+                Black Friday 2026
+            </div>
+            <div class="nav-item" onclick="showPage('premium-natal')">
+                <span class="icon"><img src="premium-natal.png" style="width: 28px; height: 28px;"></span>
+                Natal 2026
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="card">
+                <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                    <img src="logo-caixa-de-acucar.png" alt="Caixa de Açúcar" style="width: 60px; height: 60px;">
+                    <h2 style="margin: 0; display: inline-block;">Caixa de Açúcar - Planner Anual</h2>
+                    <span style="font-size: 1.8rem; color: var(--rosa-escuro); font-weight: 700; font-family: var(--font-display);">★ EDIÇÃO 2026 ★</span>
+                </div>
+                <p style="font-size: 1.1rem; color: var(--chocolate-leite); margin-top: 0.5rem; text-align: center;"><strong>O planejamento completo que toda confeiteira precisa</strong></p>
+                
+                <h3><img src="books-icon.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 12px;">O que você encontra AQUI (GRÁTIS):</h3>
+                <ul class="styled-list">
+                    <li><strong><img src="calendario-icon-1.png" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px;">Calendário Interativo:</strong> Selecione datas, veja calendário visual anual, clique para ver estratégias!</li>
+                    <li><strong><img src="tendencia-analise.png" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px;">Tendências 2026:</strong> Sabores, cores e técnicas em alta</li>
+                    <li><strong><img src="aniversario-bolo.png" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px;">Estratégias de Aniversário:</strong> Como vender mais</li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem;"><img src="logo-caixa-de-acucar.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 12px;">BÔNUS - Datas Estratégicas:</h3>
+                <ul class="styled-list">
+                    <li><strong><img src="logo-caixa-de-acucar.png" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px;">Guias Completos:</strong> As 4 maiores datas do ano mapeadas com estratégias detalhadas (Páscoa, Natal, Black Friday, Dia das Mães)</li>
+                </ul>
+                
+                <!-- Seção de Onboarding -->
+                <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, var(--marshmallow) 0%, var(--champagne) 100%); border-radius: 15px; box-shadow: var(--shadow-soft);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                        <img src="onboarding-icon.png" style="width: 80px; height: 80px;">
+                        <h3 style="margin: 0; color: var(--rosa-escuro); font-size: 1.5rem;">Como usar o Planner</h3>
+                    </div>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <span style="flex-shrink: 0; width: 30px; height: 30px; background: var(--rosa-brigadeiro); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</span>
+                            <div>
+                                <strong style="color: var(--chocolate-escuro);">Explore o menu lateral</strong>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--chocolate-leite);">Navegue entre Calendário, Tendências, Aniversários e Datas Estratégicas</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <span style="flex-shrink: 0; width: 30px; height: 30px; background: var(--rosa-brigadeiro); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</span>
+                            <div>
+                                <strong style="color: var(--chocolate-escuro);">Dados salvos automaticamente</strong>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--chocolate-leite);">Suas seleções no calendário são salvas no seu navegador - não perca nada!</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <span style="flex-shrink: 0; width: 30px; height: 30px; background: var(--rosa-brigadeiro); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</span>
+                            <div>
+                                <strong style="color: var(--chocolate-escuro);">Dispositivo único</strong>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--chocolate-leite);">As informações ficam salvas apenas neste navegador e dispositivo (não sincroniza entre aparelhos)</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <span style="flex-shrink: 0; width: 30px; height: 30px; background: var(--rosa-brigadeiro); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</span>
+                            <div>
+                                <strong style="color: var(--chocolate-escuro);">Acesso offline</strong>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--chocolate-leite);">Depois de carregar uma vez, você pode usar o planner mesmo sem internet!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: white; border-left: 4px solid var(--rosa-brigadeiro); border-radius: 8px;">
+                        <p style="margin: 0; color: var(--chocolate-leite); font-size: 0.95rem;"><strong style="color: var(--rosa-escuro);">💡 Dica:</strong> Marque este site nos seus favoritos para acessar rapidamente sempre que precisar!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEU CALENDÁRIO INTERATIVO -->
+        <div id="calendario-interativo" class="page">
+            <div class="card">
+                <h2><img src="calendario-icon-1.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Meu Calendário Interativo 2026</h2>
+                <p style="font-size: 1.2rem;">Clique em cada mês para selecionar as datas que você vai trabalhar!</p>
+
+                <div class="info-box special">
+                    <h4>💡 Como funciona:</h4>
+                    <p><strong>1.</strong> Clique em um mês abaixo<br>
+                    <strong>2.</strong> Marque as datas comemorativas que vai trabalhar<br>
+                    <strong>3.</strong> Veja seu calendário anual visual se formar automaticamente<br>
+                    <strong>4.</strong> Clique nas datas coloridas para ver estratégias!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Selecione os Meses</h3>
+                <div class="month-cards-grid" id="month-cards-grid">
+                    <!-- Cards serão gerados pelo JavaScript -->
+                </div>
+
+                <h3 id="visual-calendar-title" style="display: none;"><img src="calendario-icon-3.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Seu Calendário Anual 2026</h3>
+                <div class="calendar-visual" id="calendar-visual" style="display: none;">
+                    <!-- Calendário visual será gerado pelo JavaScript -->
+                </div>
+
+                </div>
+        </div>
+
+        <!-- MODAL para detalhes da data -->
+        <div id="date-detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeDateDetailModal()">&times;</span>
+                <div id="modal-date-detail-content">
+                    <!-- Conteúdo será injetado pelo JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TENDÊNCIAS PAGE -->
+        <div id="tendencias" class="page">
+            <div class="card">
+                <h2><img src="tendencia-analise.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Tendências de Confeitaria 2026</h2>
+                <p>Baseado nas principais pesquisas de mercado globais.</p>
+
+                <h3><img src="tendencia-sabores.png" style="width: 55px; height: 55px; vertical-align: middle; margin-right: 12px;">SABORES EM ALTA</h3>
+                <div class="trends-grid">
+                    <div class="trend-card" style="border-top-color: var(--caramelo);">
+                        <h4>Sabores Cítricos & Ácidos</h4>
+                        <p><strong>A tendência #1 de 2026!</strong> Limão siciliano, yuzu, maracujá, framboesa. Os consumidores querem sabores mais leves e frescos.</p>
+                        <p><em>💡 Aplicação:</em> Mousses de maracujá, bolos com zest de limão, geleias de frutas ácidas.</p>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--verde-menta);">
+                        <h4>Pistache</h4>
+                        <p>Continua em alta pela sofisticação. Use em recheios, coberturas, macarons e sorvetes.</p>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--lavanda);">
+                        <h4>Sabores Florais & Herbais</h4>
+                        <p>Lavanda, hibisco, alecrim, manjericão, flor de laranjeira e água de rosas para ganaches e macarons.</p>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--chocolate-leite);">
+                        <h4>Matcha & Tahine</h4>
+                        <p>Ingredientes orientais oferecem experiências sensoriais sofisticadas e surpreendentes.</p>
+                    </div>
+                </div>
+
+                <h3><img src="tendencia-design.png" style="width: 55px; height: 55px; vertical-align: middle; margin-right: 12px;">ESTÉTICA & APRESENTAÇÃO</h3>
+                <div class="trends-grid">
+                    <div class="trend-card" style="border-top-color: var(--rosa-cupcake);">
+                        <h4>Mini Sobremesas</h4>
+                        <p><strong>One-bite cakes!</strong> Bolos em miniatura. Porções menores sem comprometer o sabor. Aumento de 400% nas buscas!</p>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--rosa-brigadeiro);">
+                        <h4>Minimalismo Elegante</h4>
+                        <p>Formatos simples, tons pastéis, glacês espelhados e flores cristalizadas.</p>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--coral);">
+                        <h4>Cores Naturais</h4>
+                        <p>Corantes extraídos de beterraba, cúrcuma, spirulina e frutas.</p>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--caramelo);">
+                        <h4>Pintura Artística</h4>
+                        <p>Aerógrafo, pintura com pincel, flores desidratadas. Cada bolo é uma peça única!</p>
+                    </div>
+                </div>
+
+                <h3><img src="tendencia-sustentabilidade.png" style="width: 55px; height: 55px; vertical-align: middle; margin-right: 12px;">SUSTENTABILIDADE</h3>
+                <div class="info-box success">
+                    <ul class="styled-list">
+                        <li><strong>Ingredientes orgânicos & locais</strong></li>
+                        <li><strong>Opções veganas e sem glúten</strong></li>
+                        <li><strong>Embalagens sustentáveis</strong></li>
+                        <li><strong>Doces no pote</strong> (praticidade)</li>
+                    </ul>
+                </div>
+
+                </div>
+        </div>
+
+        <!-- ANIVERSÁRIOS PAGE -->
+        <div id="aniversarios" class="page">
+            <div class="card">
+                <h2><img src="aniversario-bolo.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Estratégias para Aniversários</h2>
+                <p>Seu aniversário e o da sua confeitaria são ÓTIMAS oportunidades para vendas e engajamento!</p>
+
+                <h3><img src="aniversario-baloes.png" style="width: 55px; height: 55px; vertical-align: middle; margin-right: 12px;">Seu Aniversário</h3>
+                <div class="strategy-box">
+                    <h4>Por que trabalhar no seu aniversário?</h4>
+                    <ul class="styled-list">
+                        <li><strong>Conexão Emocional:</strong> Seus clientes vão querer celebrar com você!</li>
+                        <li><strong>Diferenciação:</strong> Poucas empresas fazem isso de forma autêntica</li>
+                        <li><strong>Humanização da Marca:</strong> Mostra quem você é por trás da confeitaria</li>
+                        <li><strong>Engajamento Natural:</strong> Pessoas adoram parabenizar e interagir</li>
+                    </ul>
+                </div>
+
+                <h3><img src="aniversario-ideias.png" style="width: 55px; height: 55px; vertical-align: middle; margin-right: 12px;">Ideias de Campanhas - Seu Aniversário</h3>
+                <div class="trends-grid">
+                    <div class="trend-card" style="border-top-color: var(--rosa-brigadeiro);">
+                        <h4>1. Promoção Especial</h4>
+                        <ul class="styled-list">
+                            <li>"Quem faz aniversário sou eu, quem ganha presente é você!"</li>
+                            <li>X% de desconto durante a semana do aniversário</li>
+                            <li>Brinde especial para quem comprar</li>
+                            <li>Sorteio de um kit especial</li>
+                        </ul>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--coral);">
+                        <h4>2. Produto do Aniversário</h4>
+                        <ul class="styled-list">
+                            <li>Crie um doce especial disponível só nessa semana</li>
+                            <li>"Bolo de Aniversário da Ká" com receita especial</li>
+                            <li>Kit comemorativo limitado</li>
+                            <li>Sabor exclusivo em homenagem ao dia</li>
+                        </ul>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--caramelo);">
+                        <h4>3. Conte Sua História</h4>
+                        <ul class="styled-list">
+                            <li>Série de posts no Instagram contando sua jornada</li>
+                            <li>"Como tudo começou"</li>
+                            <li>Fotos antigas vs hoje</li>
+                            <li>Agradecimentos aos clientes</li>
+                            <li>Bastidores e histórias marcantes</li>
+                        </ul>
+                    </div>
+
+                    <div class="trend-card" style="border-top-color: var(--rosa-escuro);">
+                        <h4>4. Live de Aniversário</h4>
+                        <ul class="styled-list">
+                            <li>Faça uma live especial no Instagram</li>
+                            <li>Mostre como faz seu doce favorito</li>
+                            <li>Sorteios ao vivo</li>
+                            <li>Q&A com seus clientes</li>
+                            <li>Cupons de desconto exclusivos para quem assistir</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3><img src="aniversario-presente.png" style="width: 55px; height: 55px; vertical-align: middle; margin-right: 12px;">Aniversário da Confeitaria</h3>
+                <div class="strategy-box">
+                    <h4>Marcos Importantes:</h4>
+                    <p><strong>1 ano, 2 anos, 5 anos, 10 anos...</strong> Cada marco merece celebração!</p>
+                </div>
+
+                </div>
+        </div>
+
+        <!-- Adicione outras páginas aqui conforme necessário -->
+        
+    
+
+        <!-- PÁGINA COMPLETA: JANEIRO -->
+        <div id="mes-janeiro" class="page">
+            <div class="card">
+                <h2><img src="1.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Janeiro 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Dourado e Branco</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-janeiro">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="strategy-box">
+                    <h4>💡 Estratégia do Mês:</h4>
+                    <p>Janeiro é pós-festas = movimento mais fraco. Foque em opções saudáveis e porções menores para quem está de dieta pós ano novo!</p>
+                    <ul class="styled-list">
+                        <li><strong>Opções Light:</strong> Mousses de frutas, gelatinas, doces sem açúcar</li>
+                        <li><strong>Detox:</strong> Sobremesas com frutas frescas</li>
+                        <li><strong>Porções Pequenas:</strong> Mini doces, individuais</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: FEVEREIRO -->
+        <div id="mes-fevereiro" class="page">
+            <div class="card">
+                <h2><img src="2.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Fevereiro 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Rosa, Verde, Azul (Carnaval)</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-fevereiro">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="strategy-box">
+                    <h4>🎭 CARNAVAL - Estratégia Completa:</h4>
+                    <p><strong>Carnaval é a ESTRELA de fevereiro!</strong> Prepare-se com antecedência!</p>
+                    <ul class="styled-list">
+                        <li><strong>Doces Temáticos:</strong> Cores vibrantes (verde, amarelo, rosa, azul)</li>
+                        <li><strong>Kits para Festas:</strong> Caixinhas personalizadas</li>
+                        <li><strong>Brigadeiros Decorados:</strong> Máscaras de açúcar</li>
+                        <li><strong>Cupcakes:</strong> Confete comestível, cores do carnaval</li>
+                    </ul>
+                </div>
+
+                <div class="info-box special">
+                    <h4>🎊 Produtos para Carnaval:</h4>
+                    <ul class="styled-list">
+                        <li>Brigadeiros gourmet cores do Carnaval</li>
+                        <li>Cupcakes com máscaras de açúcar</li>
+                        <li>Cookies decorados (palhaços, confetes, máscaras)</li>
+                        <li>Kits para blocos de rua</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: MARCO -->
+        <div id="mes-marco" class="page">
+            <div class="card">
+                <h2><img src="3.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Março 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Roxo, Rosa, Lilás</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-marco">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="strategy-box">
+                    <h4>💐 DIA DA MULHER - Estratégia:</h4>
+                    <p><strong>Comece a divulgação no início de março!</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>Kits Especiais:</strong> "Mimos para Elas", "Power Woman"</li>
+                        <li><strong>Embalagens Delicadas:</strong> Roxo, rosa, lilás com mensagens empoderadoras</li>
+                        <li><strong>Parcerias:</strong> Salões de beleza, academias femininas</li>
+                        <li><strong>Doces Personalizados:</strong> Brigadeiros gourmet, macarons delicados</li>
+                    </ul>
+                </div>
+
+                <div class="info-box success">
+                    <h4>🎯 Produtos Sugeridos:</h4>
+                    <ul class="styled-list">
+                        <li>Caixas de bombons personalizadas</li>
+                        <li>Mini bolos individuais</li>
+                        <li>Macarons em tons pastéis</li>
+                        <li>Brownies gourmet</li>
+                        <li>Cookies com mensagens ("Girl Power", "Você é Incrível")</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: ABRIL -->
+        <div id="mes-abril" class="page">
+            <div class="card">
+                <h2><img src="4.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Abril 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Rosa, Amarelo, Verde</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-abril">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>🐰 PÁSCOA 2026 - A MAIS IMPORTANTE!</h4>
+                    <p><strong>⚠️ LEMBRE-SE:</strong> A Páscoa pode representar até <strong>40% do faturamento anual</strong>!</p>
+                    <ul class="styled-list">
+                        <li><strong>Janeiro-Fevereiro:</strong> Planeje produtos e fornecedores</li>
+                        <li><strong>Março:</strong> Divulgação massiva e pré-vendas</li>
+                        <li><strong>Primeira semana Abril:</strong> Produção intensiva</li>
+                        <li><strong>Entrega:</strong> Organize por bairro/região</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>🥚 Produtos Essenciais para Páscoa:</h4>
+                    <ul class="styled-list">
+                        <li><strong>Ovos de Colher:</strong> Tradicional, Gourmet, Vegano</li>
+                        <li><strong>Ovos Recheados:</strong> Brigadeiro, Pistache, Cítricos (tendência!)</li>
+                        <li><strong>Barras de Chocolate:</strong> Presenteáveis</li>
+                        <li><strong>Kits Páscoa:</strong> Ovos + doces + cartão</li>
+                        <li><strong>Mini Ovos:</strong> Para lembrancinhas corporativas</li>
+                    </ul>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>💰 Quer Faturar Alto na Páscoa?</h4>
+                    <p>Considere o <strong>PLANNER PREMIUM PÁSCOA 2026</strong> com cronograma detalhado, receitas, marketing e muito mais!</p>
+                    <button class="btn" onclick="showPage('premium-pascoa')" style="margin-top: 1rem;">
+                        🐰 Ver Planner Premium Páscoa
+                    </button>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: MAIO -->
+        <div id="mes-maio" class="page">
+            <div class="card">
+                <h2><img src="5.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Maio 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Rosa, Vermelho</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-maio">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>💐 DIA DAS MÃES - Estratégia:</h4>
+                    <p><strong>85% dos brasileiros presenteiam suas mães!</strong> É uma das 3 maiores datas comerciais do Brasil!</p>
+                    <ul class="styled-list">
+                        <li><strong>Café da Manhã Especial:</strong> Kits com doces + salgados</li>
+                        <li><strong>Kits de Almoço:</strong> Sobremesas prontas</li>
+                        <li><strong>Cestas Personalizadas:</strong> Com produtos favoritos</li>
+                        <li><strong>Delivery no Domingo:</strong> Ofereça entrega especial (cobre premium!)</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>🎁 Ideias de Produtos:</h4>
+                    <ul class="styled-list">
+                        <li>Bolo no pote temático "Para a melhor mãe"</li>
+                        <li>Caixas de brigadeiros gourmet delicados</li>
+                        <li>Cupcakes decorados com flores</li>
+                        <li>Tortas de frutas</li>
+                        <li>Brownies com mensagem personalizada</li>
+                        <li>Kit café da manhã completo</li>
+                    </ul>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>💰 Quer Estratégias Avançadas?</h4>
+                    <p>O <strong>PLANNER PREMIUM DIA DAS MÃES 2026</strong> tem kits prontos, cronogramas e marketing completo!</p>
+                    <button class="btn" onclick="showPage('premium-maes')" style="margin-top: 1rem;">
+                        💐 Ver Planner Premium Dia das Mães
+                    </button>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: JUNHO -->
+        <div id="mes-junho" class="page">
+            <div class="card">
+                <h2><img src="6.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Junho 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Vermelho, Amarelo</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-junho">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="strategy-box">
+                    <h4>💕 Dia dos Namorados - Estratégia:</h4>
+                    <ul class="styled-list">
+                        <li><strong>Kits Românticos:</strong> Coração, vermelho, mensagens de amor</li>
+                        <li><strong>Doces para Dois:</strong> Porções duplas, compartilháveis</li>
+                        <li><strong>Chocolates Premium:</strong> Trufas, bombons recheados</li>
+                        <li><strong>Bolos Decorados:</strong> Topo de bolo com casal</li>
+                        <li><strong>Cookies Decorados:</strong> Corações, cupido, "Te Amo"</li>
+                    </ul>
+                </div>
+
+                <div class="info-box special">
+                    <h4>🎪 FESTAS JUNINAS - Oportunidade de Ouro!</h4>
+                    <p>Junho INTEIRO tem demanda por doces juninos!</p>
+                    <ul class="styled-list">
+                        <li><strong>Pé de Moleque:</strong> Tradicional e lucrativo</li>
+                        <li><strong>Cocada:</strong> Branca e preta</li>
+                        <li><strong>Paçoca:</strong> Caseira premium</li>
+                        <li><strong>Bolo de Milho:</strong> Individual ou grande</li>
+                        <li><strong>Curau/Canjica:</strong> No pote</li>
+                        <li><strong>Brigadeiro de Milho:</strong> Inovação!</li>
+                        <li><strong>Bolo de Fubá:</strong> Clássico</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: JULHO -->
+        <div id="mes-julho" class="page">
+            <div class="card">
+                <h2><img src="7.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Julho 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Marrom, Chocolate</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-julho">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>🍫 DIA DO CHOCOLATE (07/07):</h4>
+                    <p>Aproveite TODA A SEMANA para vender!</p>
+                    <ul class="styled-list">
+                        <li><strong>Promoção:</strong> "Semana do Chocolate" (04 a 10/07)</li>
+                        <li><strong>Trufas Gourmet:</strong> Sabores diferenciados</li>
+                        <li><strong>Brownies Especiais:</strong> Com recheios variados</li>
+                        <li><strong>Fondue de Chocolate:</strong> Kits para fazer em casa</li>
+                        <li><strong>Cookies Triplo Chocolate:</strong> Indulgência máxima</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>👶 FÉRIAS ESCOLARES - Oportunidades:</h4>
+                    <ul class="styled-list">
+                        <li><strong>Oficinas de Confeitaria:</strong> Para crianças (com responsável)</li>
+                        <li><strong>Kits Infantis:</strong> Doces coloridos e divertidos</li>
+                        <li><strong>Personalização:</strong> Bolos temáticos de personagens</li>
+                        <li><strong>Festas de Aniversário:</strong> Alta demanda em julho</li>
+                    </ul>
+                </div>
+
+                <div class="info-box success">
+                    <h4>💛 DIA DO AMIGO (20/07):</h4>
+                    <ul class="styled-list">
+                        <li>Kits para presentear amigos</li>
+                        <li>Promoção "Compre 2, leve 3"</li>
+                        <li>Embalagens especiais "Amizade"</li>
+                        <li>Cookies com mensagens</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: AGOSTO -->
+        <div id="mes-agosto" class="page">
+            <div class="card">
+                <h2><img src="8.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Agosto 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Azul, Marrom, Preto</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-agosto">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>👔 DIA DOS PAIS - Estratégia:</h4>
+                    <p>Homens geralmente compram em cima da hora - facilite!</p>
+                    <ul class="styled-list">
+                        <li><strong>Kits Prontos:</strong> "Super Pai", "Pai Chef", "Pai Gourmet"</li>
+                        <li><strong>Sabores Masculinos:</strong> Café, whisky, cerveja artesanal</li>
+                        <li><strong>Embalagens Sóbrias:</strong> Cores escuras, design clean</li>
+                        <li><strong>Delivery Expresso:</strong> Entrega no sábado e domingo</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>🎁 Produtos para Dia dos Pais:</h4>
+                    <ul class="styled-list">
+                        <li>Brownies de Café ou Cerveja</li>
+                        <li>Trufas de Whisky</li>
+                        <li>Cookies Gigantes "Melhor Pai"</li>
+                        <li>Bolo Gelado no Pote (sabores intensos)</li>
+                        <li>Kit Café Gourmet + Doces</li>
+                        <li>Cupcakes decorados (gravata, bigode, ferramentas)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box success">
+                    <h4>🎭 DIA DO FOLCLORE (22/08):</h4>
+                    <p>Aproveite para criar produtos temáticos brasileiros!</p>
+                    <ul class="styled-list">
+                        <li>Brigadeiros decorados (Saci, Curupira)</li>
+                        <li>Doces típicos regionais</li>
+                        <li>Oficinas para escolas</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: SETEMBRO -->
+        <div id="mes-setembro" class="page">
+            <div class="card">
+                <h2><img src="9.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Setembro 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Verde, Amarelo (Primavera)</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-setembro">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>🍬 DIA DO BRIGADEIRO (10/09):</h4>
+                    <p>O doce mais amado do Brasil merece destaque!</p>
+                    <ul class="styled-list">
+                        <li><strong>Promoção Especial:</strong> Descontos em brigadeiros</li>
+                        <li><strong>Sabores Exclusivos:</strong> Lance sabores limitados</li>
+                        <li><strong>Concurso:</strong> "Melhor foto com brigadeiro"</li>
+                        <li><strong>História:</strong> Conte a origem do doce no Instagram</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>🎁 DIA DO CLIENTE (15/09) - ESSENCIAL!</h4>
+                    <p>Essa data é sobre FIDELIZAÇÃO, não apenas vendas!</p>
+                    <ul class="styled-list">
+                        <li><strong>Mimo Surpresa:</strong> Brinde para clientes fiéis</li>
+                        <li><strong>Desconto Especial:</strong> 15% em todas as compras</li>
+                        <li><strong>Cliente VIP:</strong> Acesso antecipado a novos produtos</li>
+                        <li><strong>Mensagem Personalizada:</strong> Agradeça nominalmente</li>
+                    </ul>
+                </div>
+
+                <div class="info-box success">
+                    <h4>🌸 PRIMAVERA (23/09):</h4>
+                    <p>Renovação, leveza, cores!</p>
+                    <ul class="styled-list">
+                        <li>Sabores florais (lavanda, rosas, hibisco)</li>
+                        <li>Cores pastéis</li>
+                        <li>Decoração com flores comestíveis</li>
+                        <li>Doces mais leves</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: OUTUBRO -->
+        <div id="mes-outubro" class="page">
+            <div class="card">
+                <h2><img src="10.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Outubro 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Laranja, Preto, Roxo</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-outubro">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>🎃 HALLOWEEN 2026 - ESTRATÉGIA COMPLETA</h4>
+                    <p><strong>Cai em SÁBADO = festas o dia todo!</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>Brigadeiros Assustadores:</strong> Laranja, preto, roxo</li>
+                        <li><strong>Cupcakes Temáticos:</strong> Aranhas, morcegos, fantasmas</li>
+                        <li><strong>Cookies Decorados:</strong> Abóboras, caveiras, bruxas</li>
+                        <li><strong>Bolos Especiais:</strong> "Caldeirão", naked cake com frutas escuras</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>🎈 DIA DAS CRIANÇAS (12/10):</h4>
+                    <ul class="styled-list">
+                        <li>Doces coloridos e divertidos</li>
+                        <li>Bolos de personagens</li>
+                        <li>Kits festa infantil</li>
+                        <li>Parcerias com escolas</li>
+                    </ul>
+                </div>
+
+                <div class="info-box success">
+                    <h4>📚 DIA DOS PROFESSORES (15/10):</h4>
+                    <ul class="styled-list">
+                        <li>Kits especiais para professores</li>
+                        <li>Parcerias com escolas</li>
+                        <li>Encomendas antecipadas</li>
+                    </ul>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: NOVEMBRO -->
+        <div id="mes-novembro" class="page">
+            <div class="card">
+                <h2><img src="11.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Novembro 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Preto, Dourado</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-novembro">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>🛍️ BLACK FRIDAY - A MAIOR DATA DO VAREJO!</h4>
+                    <p><strong>⚠️ NÃO É SÓ SOBRE DESCONTOS - É ESTRATÉGIA!</strong></p>
+                    <p>Use a Black Friday para:</p>
+                    <ul class="styled-list">
+                        <li>✅ Vender <strong>vouchers de Natal</strong> com desconto</li>
+                        <li>✅ Pré-venda de panetones e produtos natalinos</li>
+                        <li>✅ Garantir fluxo de caixa ANTES do Natal</li>
+                        <li>✅ Flash sales programadas durante o dia</li>
+                        <li>✅ Kits promocionais irresistíveis</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>💡 Estratégias Rápidas Black Friday:</h4>
+                    <ul class="styled-list">
+                        <li><strong>Vouchers de Natal:</strong> "Compre hoje por R$100, resgate R$150 em dezembro"</li>
+                        <li><strong>Pré-venda Panetones:</strong> 30% de desconto para quem garantir agora</li>
+                        <li><strong>Kits Combo:</strong> "Leve 3 produtos, pague 2"</li>
+                        <li><strong>Flash Sales:</strong> Ofertas relâmpago de hora em hora</li>
+                        <li><strong>Frete Grátis:</strong> Acima de X valor</li>
+                    </ul>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>🚀 Quer um Plano Completo para Black Friday?</h4>
+                    <p>O <strong>PLANNER PREMIUM BLACK FRIDAY 2026</strong> tem cronograma dia a dia, posts prontos e estratégias testadas!</p>
+                    <button class="btn" onclick="showPage('premium-blackfriday')" style="margin-top: 1rem;">
+                        🛍️ Ver Planner Premium Black Friday
+                    </button>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+
+
+        <!-- PÁGINA COMPLETA: DEZEMBRO -->
+        <div id="mes-dezembro" class="page">
+            <div class="card">
+                <h2><img src="12.png" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Dezembro 2026</h2>
+                <p><strong>Cor do Mês:</strong> <span class="highlight">Vermelho, Verde, Dourado</span></p>
+
+                <div class="info-box special">
+                    <h4>📋 Selecione as datas que vai trabalhar:</h4>
+                    <p>Marque as checkboxes abaixo para adicionar ao seu calendário anual!</p>
+                </div>
+
+                <h3><img src="calendario-icon-2.png" style="width: 45px; height: 45px; vertical-align: middle; margin-right: 12px;">Datas Comemorativas</h3>
+                <div class="dates-selection-list" id="dates-list-dezembro">
+                    <!-- Será preenchido por JavaScript -->
+                </div>
+
+                
+                <div class="info-box special">
+                    <h4>🎄 NATAL - PREPARAÇÃO É TUDO!</h4>
+                    <p><strong>Dezembro é o mês mais CORRIDO do ano!</strong></p>
+                    <p>Você precisa estar preparada desde NOVEMBRO:</p>
+                    <ul class="styled-list">
+                        <li><strong>Novembro:</strong> Pré-vendas Black Friday</li>
+                        <li><strong>1-15/Dez:</strong> Produção dos pedidos</li>
+                        <li><strong>16-24/Dez:</strong> Entregas programadas</li>
+                        <li><strong>25/Dez:</strong> Feriado - DESCANSE!</li>
+                        <li><strong>26-30/Dez:</strong> Preparação Ano Novo</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-box">
+                    <h4>🎁 Produtos Essenciais para Natal:</h4>
+                    <ul class="styled-list">
+                        <li><strong>PANETONES:</strong> Tradicional, gourmet, vegano, sem glúten</li>
+                        <li><strong>Biscoitos Decorados:</strong> Árvore, renas, Papai Noel</li>
+                        <li><strong>Kits Natalinos:</strong> Cestas completas</li>
+                        <li><strong>Rabanada Gourmet:</strong> Individual, no pote</li>
+                        <li><strong>Bolo Gelado:</strong> Sobremesa para ceia</li>
+                        <li><strong>Trufas Festivas:</strong> Embalagens temáticas</li>
+                    </ul>
+                </div>
+
+                <div class="info-box success">
+                    <h4>🎊 ANO NOVO (31/12):</h4>
+                    <p>Dezembro tem DUAS datas importantes!</p>
+                    <ul class="styled-list">
+                        <li>Kits para festas de Réveillon</li>
+                        <li>Doces dourados (virar o ano com dinheiro)</li>
+                        <li>Mini bolos de champagne</li>
+                        <li>Cookies "2027"</li>
+                    </ul>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>🎄 Quer um Natal sem Estresse e Muito Lucrativo?</h4>
+                    <p>O <strong>PLANNER PREMIUM NATAL 2026</strong> tem TUDO: cronograma, receitas, gestão de encomendas, marketing completo!</p>
+                    <button class="btn" onclick="showPage('premium-natal')" style="margin-top: 1rem;">
+                        🎄 Ver Planner Premium Natal
+                    </button>
+                </div>
+    
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-back" onclick="showPage('calendario-interativo')">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+
+                </div>
+        </div>
+
+        
+        <!-- PREMIUM PÁSCOA PAGE -->
+<div id="premium-pascoa" class="page">
+            <div class="card">
+                <h2><img src="premium-pascoa.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Páscoa 2026 - Guia Estratégico</h2>
+                
+                <p style="font-size: 1.2rem; color: var(--chocolate-escuro); margin: 1rem 0;">
+                    A Páscoa pode representar <strong style="color: var(--rosa-escuro);">até 40% do seu faturamento anual</strong>. Use este guia para se preparar com antecedência!
+                </p>
+
+                <div style="background: linear-gradient(135deg, var(--marshmallow) 0%, var(--champagne) 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">💡 Estratégias que Funcionam</h3>
+                    
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--rosa-brigadeiro);">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🎯 Comece em Janeiro</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Planeje seus produtos, teste receitas e calcule custos com calma. Quem começa cedo vende mais!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--rosa-brigadeiro);">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">📦 Kits Variados</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Ofereça opções de R$50, R$100 e R$200. Kits prontos vendem 3x mais que produtos avulsos!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--rosa-brigadeiro);">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">📸 Invista em Fotos</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Tire fotos profissionais dos seus produtos em fevereiro. Use luz natural e fundos simples.</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--rosa-brigadeiro);">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">📅 Limite de Encomendas</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Defina um número máximo de encomendas. Melhor vender menos e entregar com qualidade!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--bege-creme); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">✅ Checklist de Preparação</h3>
+                    <p style="color: var(--chocolate-leite); margin-bottom: 1rem;">Marque conforme for completando:</p>
+                    
+                    <div id="pascoa-checklist" style="display: grid; gap: 0.8rem;"></div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">📅 Cronograma Sugerido</h3>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: var(--rosa-brigadeiro); color: white; border-radius: 8px; text-align: center; font-weight: 600;">Janeiro</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Planejar cardápio, testar receitas, calcular custos</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: var(--rosa-brigadeiro); color: white; border-radius: 8px; text-align: center; font-weight: 600;">Fevereiro</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Fotografar produtos, criar artes, começar divulgação</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: var(--rosa-brigadeiro); color: white; border-radius: 8px; text-align: center; font-weight: 600;">Março</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Abrir encomendas (aceitar até 28/março), comprar insumos</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 120px; padding: 0.5rem 1rem; background: var(--rosa-brigadeiro); color: white; border-radius: 8px; text-align: center; font-weight: 600;">29Mar-04Abr</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Produção intensa dos produtos</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 120px; padding: 0.5rem 1rem; background: var(--rosa-brigadeiro); color: white; border-radius: 8px; text-align: center; font-weight: 600;">05 Abril</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">PÁSCOA - Entregas!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box special" style="margin: 2rem 0;">
+                    <h4>💰 Estratégias de Precificação</h4>
+                    <p><strong>Monte Combos Inteligentes:</strong> Kit Básico + Kit Premium + Kit Luxo</p>
+                    <p style="margin-top: 0.5rem;"><strong>Upsell na Entrega:</strong> "Quer adicionar mini ovos por um valor especial?"</p>
+                    <p style="margin-top: 0.5rem;"><strong>Valor Agregado:</strong> Embalagem bonita vale mais que o produto em si!</p>
+                    <p style="margin-top: 0.5rem; font-style: italic; color: var(--rosa-escuro);">💡 Dica: Clientes pagam mais por experiência completa do que por chocolate avulso</p>
+                </div>
+
+                <div style="background: var(--bege-creme); color: var(--chocolate-escuro); padding: 2.5rem; border-radius: 15px; text-align: center; margin: 3rem 0;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.8rem; color: var(--rosa-escuro);">🎁 Quer Ainda Mais?</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--chocolate-leite);">Estamos preparando um material COMPLETO com:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; text-align: left;">
+                        <div style="background: white; padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); border: 1px solid var(--rosa-morango);">📋 Cardápios Profissionais</div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); border: 1px solid var(--rosa-morango);">🎨 Templates Editáveis</div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); border: 1px solid var(--rosa-morango);">📦 Embalagens Temáticas</div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); border: 1px solid var(--rosa-morango);">🍰 Receitas Especiais</div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); border: 1px solid var(--rosa-morango);">📅 Calendário de Posts</div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); border: 1px solid var(--rosa-morango);">🤖 Assistentes de IA</div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, var(--rosa-brigadeiro) 0%, var(--rosa-escuro) 100%); color: white; padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+                        <p style="font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0;"><img src="foguete-icon.png" style="width: 24px; height: 24px; vertical-align: middle; display: inline-block;"> LANÇAMENTO EM BREVE</p>
+                        <p style="font-size: 1.8rem; font-weight: 700; margin: 0; color: white;"><img src="pascoa-icon.png" style="width: 80px; height: 80px; vertical-align: middle; margin-right: 10px;"> 15 de Fevereiro de 2026</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn" onclick="showPage('calendario-interativo')" style="padding: 1rem 2rem;">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREMIUM DIA DAS MÃES PAGE -->
+<div id="premium-maes" class="page">
+            <div class="card">
+                <h2><img src="premium-diadasmaes.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Dia das Mães 2026 - Guia Estratégico</h2>
+                
+                <p style="font-size: 1.2rem; color: var(--chocolate-escuro); margin: 1rem 0;">
+                    <strong style="color: var(--rosa-escuro);">85% dos brasileiros presenteiam suas mães!</strong> Uma das 3 maiores datas comerciais do ano!
+                </p>
+
+                <div style="background: linear-gradient(135deg, var(--marshmallow) 0%, var(--champagne) 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">💡 Estratégias que Funcionam</h3>
+                    
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FF69B4;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🎯 Café da Manhã na Cama</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Kits completos: pães, bolos, geleias, suco. Entrega às 7h do domingo. Cobrança premium é justificada!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FF69B4;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">💐 Parcerias Estratégicas</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Una-se a floricultura! Kit: flores + bolo. Ela vende suas flores, você vende seu bolo. Todo mundo ganha!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FF69B4;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🎁 Embalagem Delicada</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Invista em caixas bonitas, laços, cartões. O visual conta MUITO nesta data!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FF69B4;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">📅 Entrega no Domingo</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Organize entregas para o domingo (11/05). Cobre taxa extra. Vale a pena!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--bege-creme); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">✅ Checklist de Preparação</h3>
+                    <p style="color: var(--chocolate-leite); margin-bottom: 1rem;">Marque conforme for completando:</p>
+                    
+                    <div id="diadasmaes-checklist" style="display: grid; gap: 0.8rem;"></div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">📅 Cronograma Sugerido</h3>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #FF69B4; color: white; border-radius: 8px; text-align: center; font-weight: 600;">Março</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Planejar kits, definir preços, buscar parceiros</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #FF69B4; color: white; border-radius: 8px; text-align: center; font-weight: 600;">Abril</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Fotografar, criar artes, iniciar divulgação</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #FF69B4; color: white; border-radius: 8px; text-align: center; font-weight: 600;">1-5 Maio</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Abrir encomendas, divulgação intensa</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #FF69B4; color: white; border-radius: 8px; text-align: center; font-weight: 600;">6-9 Maio</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Produção intensa dos produtos</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #FF69B4; color: white; border-radius: 8px; text-align: center; font-weight: 600;">10 Maio</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">DIA DAS MÃES - Entregas! (cafés da manhã desde às 7h)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box special" style="margin: 2rem 0;">
+                    <h4>💰 Estratégias de Precificação</h4>
+                    <p><strong>Combo Experiência:</strong> Café da manhã + cartão personalizado + entrega pontual</p>
+                    <p style="margin-top: 0.5rem;"><strong>Parcerias Inteligentes:</strong> Divida custos e lucro com floricultura/presente local</p>
+                    <p style="margin-top: 0.5rem;"><strong>Taxa de Conveniência:</strong> Entrega no domingo cedo vale o adicional!</p>
+                    <p style="margin-top: 0.5rem; font-style: italic; color: var(--rosa-escuro);">💡 Dica: Cliente paga pela emoção e surpresa, não só pelo bolo</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%); color: white; padding: 2.5rem; border-radius: 15px; text-align: center; margin: 3rem 0;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.8rem; color: white; font-weight: 700;">🎁 Quer Ainda Mais?</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: white; font-weight: 700;">Estamos preparando um material COMPLETO com:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; text-align: left;">
+                        <div style="background: var(--bege-creme); padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); font-weight: 700;">📋 Cardápios de Kits</div>
+                        <div style="background: var(--bege-creme); padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); font-weight: 700;">🎨 Templates Delicados</div>
+                        <div style="background: var(--bege-creme); padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); font-weight: 700;">📦 Ideias de Embalagens</div>
+                        <div style="background: var(--bege-creme); padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); font-weight: 700;">🍰 Receitas Especiais</div>
+                        <div style="background: var(--bege-creme); padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); font-weight: 700;">📅 Plano de Marketing</div>
+                        <div style="background: var(--bege-creme); padding: 1rem; border-radius: 8px; color: var(--chocolate-escuro); font-weight: 700;">🤖 Assistentes de IA</div>
+                    </div>
+                    
+                    <div style="background: var(--bege-creme); color: var(--chocolate-escuro); padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+                        <p style="font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #FF69B4;"><img src="foguete-icon.png" style="width: 24px; height: 24px; vertical-align: middle; display: inline-block;"> LANÇAMENTO EM BREVE</p>
+                        <p style="font-size: 1.8rem; font-weight: 700; margin: 0; color: #FF69B4;"><img src="diadasmaes-icon.png" style="width: 80px; height: 80px; vertical-align: middle; margin-right: 10px;"> 20 de Março de 2026</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn" onclick="showPage('calendario-interativo')" style="padding: 1rem 2rem;">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREMIUM BLACK FRIDAY PAGE -->
+<div id="premium-blackfriday" class="page">
+            <div class="card">
+                <h2><img src="premium-blackfriday.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Black Friday 2026 - Guia Estratégico</h2>
+                
+                <p style="font-size: 1.2rem; color: var(--chocolate-escuro); margin: 1rem 0;">
+                    Use a Black Friday <strong style="color: var(--rosa-escuro);">estrategicamente</strong> para garantir caixa ANTES do Natal!
+                </p>
+
+                <div style="background: linear-gradient(135deg, var(--marshmallow) 0%, var(--champagne) 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">💡 Estratégias que Funcionam</h3>
+                    
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #000;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🎯 Vale-Presentes Natalinos</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Ofereça descontos em vale-presentes! Cliente paga agora, você entrega em dezembro. Fluxo de caixa garantido!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #000;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">📦 Kits Antecipados</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Venda kits de Natal com 20% de desconto na BF. Pagamento à vista, entrega programada para dezembro.</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #000;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🍰 Produtos do Estoque</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Aproveite para liquidar produtos congelados e formas que você não usa mais. Libere espaço!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #000;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">⚡ Ofertas Relâmpago</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Crie urgência! "Apenas 10 kits disponíveis" ou "Válido até 23h de hoje". Senso de escassez vende!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--bege-creme); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">✅ Checklist de Preparação</h3>
+                    <p style="color: var(--chocolate-leite); margin-bottom: 1rem;">Marque conforme for completando:</p>
+                    
+                    <div id="blackfriday-checklist" style="display: grid; gap: 0.8rem;"></div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">📅 Cronograma Sugerido</h3>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 120px; padding: 0.5rem 1rem; background: #000; color: white; border-radius: 8px; text-align: center; font-weight: 600;">1-15 Nov</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Definir ofertas, criar artes, preparar estoque</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 120px; padding: 0.5rem 1rem; background: #000; color: white; border-radius: 8px; text-align: center; font-weight: 600;">16-26 Nov</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Divulgação intensa, teasers, contagem regressiva</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 120px; padding: 0.5rem 1rem; background: #000; color: white; border-radius: 8px; text-align: center; font-weight: 600;">27 Nov</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">BLACK FRIDAY - Vendas! Responder rápido, processar pagamentos</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 120px; padding: 0.5rem 1rem; background: #000; color: white; border-radius: 8px; text-align: center; font-weight: 600;">28-30 Nov</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Black Friday Week - Estender ofertas, balanço, agradecer clientes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box special" style="margin: 2rem 0;">
+                    <h4>💰 Dica de Precificação</h4>
+                    <p><strong>Desconto real vs. desconto percebido:</strong></p>
+                    <p style="margin-top: 0.5rem;">• Vale-presente R$100 por R$80 = 20% off real</p>
+                    <p style="margin-top: 0.5rem;">• Kit R$200 por R$150 = 25% off (mas você já lucrou!)</p>
+                    <p style="margin-top: 0.5rem; font-style: italic; color: var(--rosa-escuro);">Nunca dê desconto que comprometa sua margem de lucro!</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #000 0%, #333 100%); color: white; padding: 2.5rem; border-radius: 15px; text-align: center; margin: 3rem 0;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.8rem;">🎁 Quer Ainda Mais?</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: white; font-weight: 700;">Estamos preparando um material COMPLETO com:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; text-align: left;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">📋 Scripts de Vendas</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">🎨 Artes para Stories</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">📦 Ideias de Kits</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">💬 Templates WhatsApp</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">📅 Cronograma Detalhado</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">🤖 Assistentes de IA</div>
+                    </div>
+                    
+                    <div style="background: var(--amarelo-baunilha); color: var(--chocolate-escuro); padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+                        <p style="font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0;"><img src="foguete-icon.png" style="width: 24px; height: 24px; vertical-align: middle; display: inline-block;"> LANÇAMENTO EM BREVE</p>
+                        <p style="font-size: 1.8rem; font-weight: 700; margin: 0; color: #000;"><img src="blackfriday-icon.png" style="width: 80px; height: 80px; vertical-align: middle; margin-right: 10px;"> 01 de Outubro de 2026</p>
+                        <p style="margin: 0.5rem 0 0 0; font-weight: 600;">Guia Completo Black Friday</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn" onclick="showPage('calendario-interativo')" style="padding: 1rem 2rem;">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREMIUM NATAL PAGE -->
+<div id="premium-natal" class="page">
+            <div class="card">
+                <h2><img src="premium-natal.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Natal 2026 - Guia Estratégico</h2>
+                
+                <p style="font-size: 1.2rem; color: var(--chocolate-escuro); margin: 1rem 0;">
+                    O Natal é a <strong style="color: var(--rosa-escuro);">2ª data mais lucrativa do ano</strong>. Organize-se com meses de antecedência!
+                </p>
+
+                <div style="background: linear-gradient(135deg, var(--marshmallow) 0%, var(--champagne) 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">💡 Estratégias que Funcionam</h3>
+                    
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #B22222;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🎯 Aproveite a Black Friday</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Use a Black Friday para vender vale-presentes e kits natalinos antecipados. Garanta caixa em novembro!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #B22222;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🎄 Kits Corporativos</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Empresas compram MUITO! Crie kits de R$200-500 e faça parcerias com RH de empresas locais.</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #B22222;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🕐 Entregas Programadas</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Faça entregas de 15 a 23 de dezembro. Divida por regiões e horários para não enlouquecer!</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #B22222;">
+                            <h4 style="color: var(--chocolate-escuro); margin-bottom: 0.5rem;">🍰 Panetones Artesanais</h4>
+                            <p style="color: var(--chocolate-leite); margin: 0;">Panetones gourmet são tendência! Ofereça sabores diferenciados: pistache, doce de leite, frutas secas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--bege-creme); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">✅ Checklist de Preparação</h3>
+                    <p style="color: var(--chocolate-leite); margin-bottom: 1rem;">Marque conforme for completando:</p>
+                    
+                    <div id="natal-checklist" style="display: grid; gap: 0.8rem;"></div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">📅 Cronograma Sugerido</h3>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #B22222; color: white; border-radius: 8px; text-align: center; font-weight: 600;">Outubro</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Definir cardápio, testar receitas de panetones, calcular custos</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #B22222; color: white; border-radius: 8px; text-align: center; font-weight: 600;">Novembro</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Fotografar, criar artes, Black Friday, abrir encomendas</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #B22222; color: white; border-radius: 8px; text-align: center; font-weight: 600;">1-10 Dez</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Fechar encomendas, comprar insumos, organizar produção</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #B22222; color: white; border-radius: 8px; text-align: center; font-weight: 600;">11-14 Dez</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Produção intensa dos produtos</div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="min-width: 100px; padding: 0.5rem 1rem; background: #B22222; color: white; border-radius: 8px; text-align: center; font-weight: 600;">15-23 Dez</div>
+                            <div style="flex: 1; color: var(--chocolate-leite);">Período de entregas (organizar por região)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box special" style="margin: 2rem 0;">
+                    <h4>💰 Dica de Precificação</h4>
+                    <p><strong>Panetone artesanal 500g:</strong> Custo R$12-15 → Venda R$45-60</p>
+                    <p style="margin-top: 0.5rem;"><strong>Kit Natal premium:</strong> Custo R$50 → Venda R$180-220</p>
+                    <p style="margin-top: 0.5rem; font-style: italic; color: var(--rosa-escuro);">Produtos natalinos premium podem ter margem de até 300%!</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #B22222 0%, #8B0000 100%); color: white; padding: 2.5rem; border-radius: 15px; text-align: center; margin: 3rem 0;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.8rem; color: white; font-weight: 700;">🎁 Quer Ainda Mais?</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: white; font-weight: 700;">Estamos preparando um material COMPLETO com:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; text-align: left;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">📋 Cardápio Completo</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">🎨 Templates Editáveis</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">📦 Embalagens Natalinas</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">🍰 Receitas de Panetones</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">📅 Calendário de Marketing</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">🤖 Assistentes de IA</div>
+                    </div>
+                    
+                    <div style="background: var(--amarelo-baunilha); color: var(--chocolate-escuro); padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+                        <p style="font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0;"><img src="foguete-icon.png" style="width: 24px; height: 24px; vertical-align: middle; display: inline-block;"> LANÇAMENTO EM BREVE</p>
+                        <p style="font-size: 1.8rem; font-weight: 700; margin: 0; color: #B22222;"><img src="natal-icon.png" style="width: 80px; height: 80px; vertical-align: middle; margin-right: 10px;"> 01 de Setembro de 2026</p>
+                        <p style="margin: 0.5rem 0 0 0; font-weight: 600;">Guia Completo de Natal</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn" onclick="showPage('calendario-interativo')" style="padding: 1rem 2rem;">
+                        ← Voltar ao Calendário
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- PREMIUM NATAL PAGE -->
+        
+
+        <!-- PREMIUM BLACK FRIDAY PAGE -->
+        
+
+        <!-- PREMIUM DIA DAS MÃES PAGE -->
+        
+
+
+
+
+        <!-- MODAL para adicionar data personalizada -->
+        <div id="custom-date-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeCustomDateModal()">&times;</span>
+                <h3 style="color: var(--rosa-escuro); margin-bottom: 1.5rem;">✨ Adicionar Data Personalizada</h3>
+                
+                <div style="display: grid; gap: 1rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--chocolate-escuro);">📅 Dia do Mês:</label>
+                        <input type="number" id="custom-date-day" min="1" max="31" placeholder="Digite o dia (1-31)" style="width: 100%; padding: 0.8rem; border: 2px solid var(--rosa-morango); border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--chocolate-escuro);">🎉 Nome da Data:</label>
+                        <input type="text" id="custom-date-name" placeholder="Ex: Aniversário da Confeitaria" maxlength="50" style="width: 100%; padding: 0.8rem; border: 2px solid var(--rosa-morango); border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--chocolate-escuro);">📝 Descrição Breve:</label>
+                        <textarea id="custom-date-description" placeholder="Ex: Completamos 5 anos! Fazer promoção especial" maxlength="150" rows="3" style="width: 100%; padding: 0.8rem; border: 2px solid var(--rosa-morango); border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button class="btn" onclick="saveCustomDate()" style="flex: 1; background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--rosa-escuro)); color: white;">
+                        💾 Salvar Data
+                    </button>
+                    <button class="btn" onclick="closeCustomDateModal()" style="flex: 1; background: var(--chocolate-leite); color: white;">
+                        ❌ Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <script>
+        // Dados das datas comemorativas por mês
+        const datesData = {
+            janeiro: {
+                name: 'Janeiro',
+                icon: '<img src="1.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#FFD700',
+                highlight: 'Confeiteiro, Reis',
+                dates: [
+                    { day: 1, name: 'Ano Novo', description: 'Feriado - movimento reduzido', strategy: 'Doces leves pós-festas' },
+                    { day: 2, name: 'Dia do Confeiteiro', description: 'Celebre sua profissão!', strategy: 'Promoções especiais, conte sua história' },
+                    { day: 6, name: 'Dia de Reis', description: 'Bolo de Reis tradicional', strategy: 'Bolo de Reis, rosca de Reis' },
+                    { day: 20, name: 'Dia do Queijo', description: 'Cheesecakes em destaque', strategy: 'Cheesecakes variados, promoção' }
+                ]
+            },
+            fevereiro: {
+                name: 'Fevereiro',
+                icon: '<img src="2.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#FF1493',
+                highlight: 'Carnaval',
+                dates: [
+                    { day: 2, name: 'Dia de Iemanjá', description: 'Doces azuis e brancos', strategy: 'Tema mar, cores azul/branco' },
+                    { day: 14, name: 'Carnaval - Sábado', description: 'ALTA temporada!', strategy: 'Doces coloridos, kits para festas' },
+                    { day: 15, name: 'Carnaval - Domingo', description: 'ALTA temporada!', strategy: 'Doces temáticos, máscaras' },
+                    { day: 16, name: 'Carnaval - Segunda', description: 'ALTA temporada!', strategy: 'Brigadeiros cores do carnaval' },
+                    { day: 17, name: 'Carnaval - Terça', description: 'ALTA temporada!', strategy: 'Kits para blocos de rua' }
+                ]
+            },
+            marco: {
+                name: 'Março',
+                icon: '<img src="3.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#DA70D6',
+                highlight: 'Dia da Mulher',
+                dates: [
+                    { day: 8, name: 'Dia da Mulher', description: 'Data comercial importante!', strategy: 'Kits especiais, embalagens delicadas, parcerias' },
+                    { day: 15, name: 'Dia do Consumidor', description: 'Promoções estratégicas', strategy: 'Descontos, combos, fidelização' },
+                    { day: 20, name: 'Outono', description: 'Mudança de estação', strategy: 'Sabores: damasco, figo, mel, canela' }
+                ]
+            },
+            abril: {
+                name: 'Abril',
+                icon: '<img src="4.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#FFB6C1',
+                highlight: 'PÁSCOA - Mais Lucrativa!',
+                dates: [
+                    { day: 2, name: 'Quinta-feira Santa', description: 'Feriado em muitas cidades', strategy: 'Preparação final para Páscoa' },
+                    { day: 3, name: 'Sexta-feira Santa', description: 'Feriado nacional', strategy: 'Últimas vendas pré-Páscoa' },
+                    { day: 5, name: 'PÁSCOA', description: 'Data MAIS LUCRATIVA!', strategy: 'Ovos, chocolates, kits - PLANNER PREMIUM disponível!' },
+                    { day: 19, name: 'Dia do Índio', description: 'Data escolar', strategy: 'Brigadeiros temáticos para escolas' },
+                    { day: 21, name: 'Tiradentes', description: 'Feriado', strategy: 'Feriado prolongado - vendas' }
+                ]
+            },
+            maio: {
+                name: 'Maio',
+                icon: '<img src="5.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#FF69B4',
+                highlight: 'Dia das Mães',
+                dates: [
+                    { day: 1, name: 'Dia do Trabalho', description: 'Feriado', strategy: 'Descanso ou preparação Dia das Mães' },
+                    { day: 10, name: 'DIA DAS MÃES', description: '2ª data mais lucrativa!', strategy: 'Kits café da manhã, cestas, delivery - PLANNER PREMIUM!' },
+                    { day: 13, name: 'Dia do Confeiteiro', description: 'Celebre!', strategy: 'Promoções, conte sua história' }
+                ]
+            },
+            junho: {
+                name: 'Junho',
+                icon: '<img src="6.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#FF0000',
+                highlight: 'Namorados + Juninas',
+                dates: [
+                    { day: 5, name: 'Corpus Christi', description: 'Feriado', strategy: 'Feriado prolongado' },
+                    { day: 12, name: 'Dia dos Namorados', description: 'Data importante!', strategy: 'Kits românticos, chocolates, doces para dois' },
+                    { day: 13, name: 'Santo Antônio', description: 'Santo casamenteiro + Juninas', strategy: 'Doces juninos, tradicionais' },
+                    { day: 24, name: 'São João', description: 'FESTAS JUNINAS!', strategy: 'Pé de moleque, cocada, paçoca, bolo de milho' },
+                    { day: 29, name: 'São Pedro', description: 'Festas Juninas', strategy: 'Continue vendas juninas' }
+                ]
+            },
+            julho: {
+                name: 'Julho',
+                icon: '<img src="7.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#8B4513',
+                highlight: 'Chocolate + Férias',
+                dates: [
+                    { day: 7, name: 'Dia do Chocolate', description: 'Foco total!', strategy: 'Trufas, brownies, semana do chocolate' },
+                    { day: 20, name: 'Dia do Amigo', description: 'Presentes entre amigos', strategy: 'Kits amizade, promoção "compre 2 leve 3"' },
+                    { day: 26, name: 'Dia dos Avós', description: 'Presenteação', strategy: 'Kits especiais para avós' }
+                ]
+            },
+            agosto: {
+                name: 'Agosto',
+                icon: '<img src="8.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#4169E1',
+                highlight: 'Dia dos Pais',
+                dates: [
+                    { day: 9, name: 'DIA DOS PAIS', description: 'Data comercial!', strategy: 'Kits masculinos, sabores intensos, delivery' },
+                    { day: 11, name: 'Dia do Estudante', description: 'Promoções jovens', strategy: 'Combos estudante, descontos' },
+                    { day: 22, name: 'Dia do Folclore', description: 'Doces típicos', strategy: 'Brigadeiros decorados, doces regionais' }
+                ]
+            },
+            setembro: {
+                name: 'Setembro',
+                icon: '<img src="9.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#32CD32',
+                highlight: 'Cliente + Primavera',
+                dates: [
+                    { day: 7, name: 'Independência', description: 'Feriado', strategy: 'Feriado - planejamento' },
+                    { day: 10, name: 'Dia do Brigadeiro', description: 'Celebre!', strategy: 'Promoções brigadeiro, sabores exclusivos' },
+                    { day: 15, name: 'Dia do Cliente', description: 'FIDELIZAÇÃO!', strategy: 'Mimos, descontos, agradecimentos' },
+                    { day: 23, name: 'Primavera', description: 'Nova estação', strategy: 'Sabores florais, cores pastéis' }
+                ]
+            },
+            outubro: {
+                name: 'Outubro',
+                icon: '<img src="10.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#FF8C00',
+                highlight: 'Halloween + Crianças',
+                dates: [
+                    { day: 12, name: 'Dia das Crianças', description: 'Feriado + comercial!', strategy: 'Doces coloridos, personagens, kits festa' },
+                    { day: 15, name: 'Dia dos Professores', description: 'Kits escolas', strategy: 'Parcerias escolas, kits professores' },
+                    { day: 31, name: 'HALLOWEEN', description: 'Crescendo muito!', strategy: 'Doces temáticos, cores laranja/preto/roxo' }
+                ]
+            },
+            novembro: {
+                name: 'Novembro',
+                icon: '<img src="11.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#000000',
+                highlight: 'BLACK FRIDAY',
+                dates: [
+                    { day: 2, name: 'Finados', description: 'Feriado', strategy: 'Respeito à data' },
+                    { day: 15, name: 'Proclamação da República', description: 'Feriado', strategy: 'Feriado prolongado' },
+                    { day: 20, name: 'Consciência Negra', description: 'Feriado em várias cidades', strategy: 'Respeito e celebração' },
+                    { day: 27, name: 'BLACK FRIDAY', description: 'MEGA DATA!', strategy: 'Vouchers Natal, pré-venda, kits - PLANNER PREMIUM!' }
+                ]
+            },
+            dezembro: {
+                name: 'Dezembro',
+                icon: '<img src="12.png" style="width: 100%; height: 100%; object-fit: contain;">',
+                color: '#DC143C',
+                highlight: 'NATAL + Ano Novo',
+                dates: [
+                    { day: 8, name: 'Dia da Família', description: 'Kits reuniões', strategy: 'Kits família, sobremesas festivas' },
+                    { day: 25, name: 'NATAL', description: '2ª mais lucrativa!', strategy: 'Panetones, kits, cestas - PLANNER PREMIUM!' },
+                    { day: 31, name: 'Ano Novo', description: 'Festas!', strategy: 'Kits réveillon, doces dourados' }
+                ]
+            }
+        };
+
+        // Estado do aplicativo
+        let selectedDates = JSON.parse(localStorage.getItem('selectedDates') || '{}');
+        let customDates = JSON.parse(localStorage.getItem('customDates') || '{}');
+        let currentMonthForCustomDate = null;
+
+
+        // Inicializar ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMonthCards();
+            updateCalendarVisual();
+        });
+
+        // Renderizar cards dos meses
+        function renderMonthCards() {
+            const grid = document.getElementById('month-cards-grid');
+            grid.innerHTML = '';
+
+            Object.keys(datesData).forEach(monthKey => {
+                const month = datesData[monthKey];
+                const selectedCount = selectedDates[monthKey] ? selectedDates[monthKey].length : 0;
+                const hasSelections = selectedCount > 0;
+
+                const card = document.createElement('div');
+                card.className = `month-card ${hasSelections ? 'has-selections' : ''}`;
+                card.onclick = () => showMonthPage(monthKey);
+
+                card.innerHTML = `
+                    ${hasSelections ? `<div class="selection-badge">${selectedCount}</div>` : ''}
+                    <div class="month-icon">${month.icon}</div>
+                    <div class="month-name">${month.name}</div>
+                    <div class="month-highlight">${month.highlight}</div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Abrir modal de seleção de datas
+        
+
+        // Fechar modal de seleção
+        
+
+
+        // Mostrar página do mês e popular checkboxes
+        function showMonthPage(monthKey) {
+            const month = datesData[monthKey];
+            const pageId = 'mes-' + monthKey;
+            
+            // Ir para a página
+            showPage(pageId);
+            
+            // Popular checkboxes
+            const listContainer = document.getElementById('dates-list-' + monthKey);
+            if (!listContainer) return;
+            
+            let html = '';
+            
+            // Datas comemorativas originais
+            month.dates.forEach(date => {
+                const isChecked = selectedDates[monthKey] && selectedDates[monthKey].includes(date.day);
+                html += `
+                    <div class="date-selection-item">
+                        <label>
+                            <input type="checkbox" 
+                                   ${isChecked ? 'checked' : ''}
+                                   onchange="toggleDateSelection('${monthKey}', ${date.day})">
+                            <div class="date-info">
+                                <div class="date-title">${date.day.toString().padStart(2, '0')}/${getMonthNumber(monthKey)} - ${date.name}</div>
+                                <div class="date-description">${date.description}</div>
+                            </div>
+                        </label>
+                    </div>
+                `;
+            });
+            
+            // Datas personalizadas (se existirem)
+            if (customDates[monthKey] && customDates[monthKey].length > 0) {
+                html += '<div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px dashed var(--rosa-brigadeiro);"><h4 style="color: var(--rosa-escuro); margin-bottom: 1rem;">✨ Suas Datas Personalizadas:</h4>';
+                
+                customDates[monthKey].forEach(date => {
+                    const isChecked = selectedDates[monthKey] && selectedDates[monthKey].includes(date.day);
+                    html += `
+                        <div class="date-selection-item" style="background: linear-gradient(135deg, #FFF8F0 0%, #FFE5E5 100%);">
+                            <label style="flex: 1;">
+                                <input type="checkbox" 
+                                       ${isChecked ? 'checked' : ''}
+                                       onchange="toggleDateSelection('${monthKey}', ${date.day})">
+                                <div class="date-info">
+                                    <div class="date-title">✨ ${date.day.toString().padStart(2, '0')}/${getMonthNumber(monthKey)} - ${date.name}</div>
+                                    <div class="date-description">${date.description}</div>
+                                </div>
+                            </label>
+                            <button onclick="deleteCustomDate('${monthKey}', ${date.day}); event.stopPropagation();" style="padding: 0.3rem 0.8rem; background: var(--rosa-escuro); color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem; margin-left: 1rem;">🗑️</button>
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+            }
+            
+            // Botão para adicionar data personalizada
+            html += `
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button onclick="openCustomDateModal('${monthKey}')" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--rosa-escuro)); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3); transition: all 0.3s;">
+                        ➕ Adicionar Data Personalizada
+                    </button>
+                </div>
+            `;
+            
+            listContainer.innerHTML = html;
+        }
+
+        // Toggle seleção de data
+        function toggleDateSelection(monthKey, day) {
+            if (!selectedDates[monthKey]) {
+                selectedDates[monthKey] = [];
+            }
+
+            const index = selectedDates[monthKey].indexOf(day);
+            if (index > -1) {
+                selectedDates[monthKey].splice(index, 1);
+            } else {
+                selectedDates[monthKey].push(day);
+            }
+
+            // Limpar se vazio
+            if (selectedDates[monthKey].length === 0) {
+                delete selectedDates[monthKey];
+            }
+
+            localStorage.setItem('selectedDates', JSON.stringify(selectedDates));
+            
+            // Atualizar visualizações
+            updateCalendarVisual();
+            renderMonthCards();
+        }
+
+        // Funções para datas personalizadas
+        function openCustomDateModal(monthKey) {
+            currentMonthForCustomDate = monthKey;
+            document.getElementById('custom-date-modal').style.display = 'flex';
+            // Limpar campos
+            document.getElementById('custom-date-day').value = '';
+            document.getElementById('custom-date-name').value = '';
+            document.getElementById('custom-date-description').value = '';
+        }
+
+        function closeCustomDateModal() {
+            document.getElementById('custom-date-modal').style.display = 'none';
+            currentMonthForCustomDate = null;
+        }
+
+        function saveCustomDate() {
+            const day = parseInt(document.getElementById('custom-date-day').value);
+            const name = document.getElementById('custom-date-name').value.trim();
+            const description = document.getElementById('custom-date-description').value.trim();
+
+            // Validações
+            if (!day || day < 1 || day > 31) {
+                alert('Por favor, insira um dia válido entre 1 e 31!');
+                return;
+            }
+
+            if (!name) {
+                alert('Por favor, insira um nome para a data!');
+                return;
+            }
+
+            if (!description) {
+                alert('Por favor, insira uma descrição!');
+                return;
+            }
+
+            // Criar array se não existe
+            if (!customDates[currentMonthForCustomDate]) {
+                customDates[currentMonthForCustomDate] = [];
+            }
+
+            // Verificar se já existe data neste dia
+            const exists = customDates[currentMonthForCustomDate].some(d => d.day === day);
+            if (exists) {
+                alert('Já existe uma data personalizada neste dia! Exclua primeiro para adicionar outra.');
+                return;
+            }
+
+            // Adicionar nova data
+            customDates[currentMonthForCustomDate].push({
+                day: day,
+                name: name,
+                description: description,
+                custom: true
+            });
+
+            // Salvar no localStorage
+            localStorage.setItem('customDates', JSON.stringify(customDates));
+
+            // Marcar automaticamente no calendário
+            if (!selectedDates[currentMonthForCustomDate]) {
+                selectedDates[currentMonthForCustomDate] = [];
+            }
+            if (!selectedDates[currentMonthForCustomDate].includes(day)) {
+                selectedDates[currentMonthForCustomDate].push(day);
+                localStorage.setItem('selectedDates', JSON.stringify(selectedDates));
+            }
+
+            // Fechar modal
+            closeCustomDateModal();
+
+            // Atualizar visualizações
+            updateCalendarVisual();
+            renderMonthCards();
+
+            // Atualizar lista se estiver na página do mês
+            const currentPage = document.querySelector('.page.active');
+            if (currentPage && currentPage.id === 'mes-' + currentMonthForCustomDate) {
+                showMonthPage(currentMonthForCustomDate);
+            }
+
+            alert('✨ Data personalizada adicionada com sucesso!');
+        }
+
+        function deleteCustomDate(monthKey, day) {
+            if (!confirm('Tem certeza que deseja excluir esta data personalizada?')) {
+                return;
+            }
+
+            // Remover do array
+            customDates[monthKey] = customDates[monthKey].filter(d => d.day !== day);
+
+            // Limpar array se vazio
+            if (customDates[monthKey].length === 0) {
+                delete customDates[monthKey];
+            }
+
+            // Salvar
+            localStorage.setItem('customDates', JSON.stringify(customDates));
+
+            // Atualizar visualizações
+            updateCalendarVisual();
+            renderMonthCards();
+
+            // Atualizar lista se estiver na página do mês
+            const currentPage = document.querySelector('.page.active');
+            if (currentPage && currentPage.id === 'mes-' + monthKey) {
+                showMonthPage(monthKey);
+            }
+
+            alert('🗑️ Data personalizada excluída!');
+        }
+
+        // Atualizar calendário visual (minimalista - 12 cards)
+        function updateCalendarVisual() {
+            const hasSelections = Object.keys(selectedDates).length > 0;
+            const calendarDiv = document.getElementById('calendar-visual');
+            const titleDiv = document.getElementById('visual-calendar-title');
+
+            if (!hasSelections) {
+                calendarDiv.style.display = 'none';
+                titleDiv.style.display = 'none';
+                return;
+            }
+
+            calendarDiv.style.display = 'block';
+            titleDiv.style.display = 'block';
+            titleDiv.innerHTML = '<h2><img src="calendario-icon-3.png" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 15px;">Seu Calendário Anual 2026</h2>';
+
+            let html = '<div class="full-calendar-grid">';
+            const monthsOrder = ['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho', 
+                                 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+            const monthColors = {
+                janeiro: '#FF69B4', fevereiro: '#9370DB', marco: '#3CB371',
+                abril: '#FFA500', maio: '#32CD32', junho: '#FF6B6B',
+                julho: '#00CED1', agosto: '#FF1493', setembro: '#DA70D6',
+                outubro: '#4682B4', novembro: '#FF69B4', dezembro: '#00CED1'
+            };
+
+            const vibrantColors = [
+                '#FF1493', // Deep Pink
+                '#FF69B4', // Hot Pink
+                '#FF6347', // Tomato
+                '#FF4500', // Orange Red
+                '#FFD700', // Gold
+                '#32CD32', // Lime Green
+                '#00CED1', // Dark Turquoise
+                '#1E90FF', // Dodger Blue
+                '#9370DB', // Medium Purple
+                '#FF1493', // Deep Pink (repete)
+                '#FF69B4', // Hot Pink (repete)
+                '#00FA9A', // Medium Spring Green
+                '#FF6B9D', // Pastel Pink
+                '#7B68EE', // Medium Slate Blue
+                '#FF8C00', // Dark Orange
+                '#20B2AA', // Light Sea Green
+                '#FF69B4', // Hot Pink
+                '#8A2BE2', // Blue Violet
+                '#FF4757', // Radical Red
+                '#00D2D3'  // Robin Egg Blue
+            ];
+
+            monthsOrder.forEach((monthKey, monthIndex) => {
+                const month = datesData[monthKey];
+                const selectedInMonth = selectedDates[monthKey] || [];
+                const daysInMonth = getDaysInMonth(monthKey);
+                const firstDayOfWeek = getFirstDayOfWeek(monthKey);
+                const monthColor = monthColors[monthKey];
+
+                html += `
+                    <div class="calendar-month-box">
+                        <div class="calendar-month-header" style="background: ${monthColor};">
+                            ${month.name.toUpperCase()}
+                        </div>
+                        <div class="calendar-weekdays">
+                            <div class="weekday" style="color: #FF6B6B;">S</div>
+                            <div class="weekday">M</div>
+                            <div class="weekday">T</div>
+                            <div class="weekday">W</div>
+                            <div class="weekday">T</div>
+                            <div class="weekday">F</div>
+                            <div class="weekday" style="color: #FF6B6B;">S</div>
+                        </div>
+                        <div class="calendar-days">
+                `;
+
+                // Adicionar dias vazios antes do primeiro dia
+                for (let i = 0; i < firstDayOfWeek; i++) {
+                    html += '<div class="calendar-day empty"></div>';
+                }
+
+                // Contador de datas selecionadas para variar cores
+                let selectedDateIndex = 0;
+
+                // Adicionar todos os dias do mês
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayOfWeek = (firstDayOfWeek + day - 1) % 7;
+                    const isSunday = dayOfWeek === 0;
+                    const isSaturday = dayOfWeek === 6;
+                    const isSelected = selectedInMonth.includes(day);
+                    
+                    // Procurar em datas comemorativas E personalizadas
+                    let dateInfo = month.dates.find(d => d.day === day);
+                    let isCustomDate = false;
+                    
+                    // Se não encontrou em datesData, procurar em customDates
+                    if (!dateInfo && customDates[monthKey]) {
+                        dateInfo = customDates[monthKey].find(d => d.day === day);
+                        if (dateInfo) {
+                            isCustomDate = true;
+                        }
+                    }
+                    
+                    let dayClass = 'calendar-day';
+                    let dayStyle = '';
+                    let clickHandler = '';
+                    
+                    if (isSelected && dateInfo) {
+                        if (isCustomDate) {
+                            // Estilo especial para datas personalizadas: borda dourada
+                            dayClass += ' selected-date';
+                            dayStyle = `background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: white; font-weight: 700; border: 2px solid white; box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);`;
+                            clickHandler = `onclick="showDateDetail('${monthKey}', ${day})" style="cursor: pointer;"`;
+                        } else {
+                            // Cor vibrante variada para datas comemorativas
+                            const colorIndex = (monthIndex * 3 + selectedDateIndex) % vibrantColors.length;
+                            const vibrantColor = vibrantColors[colorIndex];
+                            
+                            dayClass += ' selected-date';
+                            dayStyle = `background: linear-gradient(135deg, ${vibrantColor} 0%, ${monthColor} 100%); color: white; font-weight: 700;`;
+                            clickHandler = `onclick="showDateDetail('${monthKey}', ${day})" style="cursor: pointer;"`;
+                        }
+                        selectedDateIndex++;
+                    } else if (isSunday || isSaturday) {
+                        dayStyle = 'color: #FF6B6B;';
+                    }
+                    
+                    html += `<div class="${dayClass}" ${clickHandler} style="${dayStyle}">${day}</div>`;
+                }
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            calendarDiv.innerHTML = html;
+        }
+
+        // Mostrar detalhes da data
+
+        // Mostrar detalhes da data
+        function showDateDetail(monthKey, day) {
+            const month = datesData[monthKey];
+            
+            // Procurar em datas comemorativas
+            let dateInfo = month.dates.find(d => d.day === day);
+            let isCustomDate = false;
+            
+            // Se não encontrou, procurar em datas personalizadas
+            if (!dateInfo && customDates[monthKey]) {
+                dateInfo = customDates[monthKey].find(d => d.day === day);
+                if (dateInfo) {
+                    isCustomDate = true;
+                }
+            }
+
+            if (!dateInfo) return;
+
+            const modal = document.getElementById('date-detail-modal');
+            const content = document.getElementById('modal-date-detail-content');
+
+            if (isCustomDate) {
+                // Layout especial para datas personalizadas
+                content.innerHTML = `
+                    <h2 style="font-family: var(--font-display); color: var(--rosa-escuro); margin-bottom: 1rem;">
+                        ✨ ${dateInfo.name}
+                    </h2>
+                    <p style="font-size: 1.2rem; color: var(--rosa-escuro); font-weight: 600; margin-bottom: 1rem;">
+                        ${day.toString().padStart(2, '0')}/${getMonthNumber(monthKey)}/2026
+                    </p>
+                    <div class="info-box" style="background: linear-gradient(135deg, #FFF8F0 0%, #FFE5E5 100%); border: 2px solid var(--rosa-brigadeiro);">
+                        <h4>💫 Esta é uma data personalizada criada por você!</h4>
+                        <p style="font-size: 1.1rem; margin-top: 1rem;"><strong>Descrição:</strong> ${dateInfo.description}</p>
+                    </div>
+                `;
+            } else {
+                // Layout normal para datas comemorativas
+                content.innerHTML = `
+                    <h2 style="font-family: var(--font-display); color: var(--chocolate-escuro); margin-bottom: 1rem;">
+                        ${month.icon} ${dateInfo.name}
+                    </h2>
+                    <p style="font-size: 1.2rem; color: var(--rosa-escuro); font-weight: 600; margin-bottom: 1rem;">
+                        ${day.toString().padStart(2, '0')}/${getMonthNumber(monthKey)}/2026
+                    </p>
+                    <div class="info-box special">
+                        <h4>📋 Sobre esta data:</h4>
+                        <p style="font-size: 1.1rem;">${dateInfo.description}</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>💡 Estratégia Sugerida:</h4>
+                        <p style="font-size: 1.1rem;">${dateInfo.strategy}</p>
+                    </div>
+                `;
+            }
+
+            modal.classList.add('active');
+        }
+
+        // Fechar modal de detalhes
+        function closeDateDetailModal() {
+            document.getElementById('date-detail-modal').classList.remove('active');
+        }
+
+        // Funções auxiliares
+        function getMonthNumber(monthKey) {
+            const months = {janeiro: '01', fevereiro: '02', marco: '03', abril: '04', maio: '05', junho: '06',
+                          julho: '07', agosto: '08', setembro: '09', outubro: '10', novembro: '11', dezembro: '12'};
+            return months[monthKey];
+        }
+
+        function getDaysInMonth(monthKey) {
+            const days = {janeiro: 31, fevereiro: 29, marco: 31, abril: 30, maio: 31, junho: 30,
+                        julho: 31, agosto: 31, setembro: 30, outubro: 31, novembro: 30, dezembro: 31};
+            return days[monthKey];
+        }
+
+        function getFirstDayOfWeek(monthKey) {
+            const firstDays = {janeiro: 4, fevereiro: 0, marco: 0, abril: 3, maio: 5, junho: 1,
+                             julho: 3, agosto: 6, setembro: 2, outubro: 4, novembro: 0, dezembro: 2};
+            return firstDays[monthKey];
+        }
+
+        // Navegação
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('active');
+            } else {
+                console.error('Página não encontrada:', pageId);
+                return;
+            }
+            
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            if (window.event && window.event.target) {
+                const navItem = window.event.target.closest('.nav-item');
+                if (navItem) navItem.classList.add('active');
+            }
+            
+            window.scrollTo(0, 0);
+            
+            if (window.innerWidth <= 968) {
+                document.getElementById('sidebar').classList.remove('mobile-open');
+            }
+        }
+
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('mobile-open');
+        }
+
+        // Exportar PDF
+        async function exportPageToPDF(pageId, filename) {
+            const { jsPDF } = window.jspdf;
+            const element = document.getElementById(pageId);
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Gerando PDF...';
+            btn.disabled = true;
+            
+            // Aplicar filtro temporário para cores mais escuras no PDF
+            element.style.filter = 'contrast(1.3) saturate(1.2)';
+            
+            try {
+                const canvas = await html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#FFFFFF'
+                });
+                
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+                
+                const imgWidth = 210;
+                const pageHeight = 297;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                pdf.save(`${filename}.pdf`);
+                
+            } catch (error) {
+                console.error('Erro ao gerar PDF:', error);
+                alert('Erro ao gerar PDF. Tente novamente.');
+            } finally {
+                // Remover filtro temporário
+                element.style.filter = '';
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Fechar modais ao clicar fora
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

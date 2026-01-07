@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vinda ao Planner 2026 | Caixa de Açúcar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa-brigadeiro: #E91E63;
+            --rosa-escuro: #C2185B;
+            --chocolate-leite: #8B6F47;
+            --fundo-claro: #FFF8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFE5E5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .welcome-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px 40px;
+            text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 120px;
+            height: 120px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .brand-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--rosa-escuro);
+            margin-bottom: 10px;
+        }
+
+        .welcome-title {
+            font-size: 1.8rem;
+            color: var(--rosa-escuro);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .user-name {
+            color: var(--rosa-brigadeiro);
+            font-size: 2rem;
+        }
+
+        .welcome-message {
+            font-size: 1.1rem;
+            color: var(--chocolate-leite);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .benefits-box {
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFE5E5 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .benefits-title {
+            font-size: 1.2rem;
+            color: var(--rosa-escuro);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--chocolate-leite);
+        }
+
+        .benefit-item::before {
+            content: "✓";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--rosa-brigadeiro);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--rosa-brigadeiro), var(--rosa-escuro));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 8px 30px rgba(233, 30, 99, 0.5); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .tip-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #9E9E9E;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .welcome-container {
+                padding: 40px 25px;
+            }
+
+            .brand-name {
+                font-size: 2rem;
+            }
+
+            .welcome-title {
+                font-size: 1.5rem;
+            }
+
+            .user-name {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="logo-container">
+            <img src="logo-caixa-de-acucar.png" alt="Caixa de Açúcar">
+        </div>
+
+        <div class="brand-name">Caixa de Açúcar</div>
+
+        <h1 class="welcome-title">
+            Bem-vinda, <span class="user-name" id="userName"></span>!
+        </h1>
+
+        <p class="welcome-message">
+            <strong>Parabéns!</strong> Seu acesso ao Planner Anual - Edição 2026 está liberado!
+        </p>
+
+        <div class="benefits-box">
+            <div class="benefits-title">✨ O que você vai encontrar:</div>
+            <div class="benefit-item">Calendário interativo com 70+ datas comemorativas</div>
+            <div class="benefit-item">As 4 datas mais lucrativas do ano mapeadas</div>
+            <div class="benefit-item">Tendências de confeitaria 2026</div>
+            <div class="benefit-item">Estratégias de vendas para aniversários</div>
+        </div>
+
+        <button class="cta-button" onclick="acessarPlanner()">
+            🚀 Acessar Meu Planner Agora
+        </button>
+
+        <p class="tip-note">
+            💡 Dica: Marque as datas que você vai trabalhar e explore os guias estratégicos!
+        </p>
+    </div>
+
+    <script>
+        // Pegar nome do localStorage
+        const userData = JSON.parse(localStorage.getItem('caixaDeAcucarAuth'));
+        
+        if (userData && userData.name) {
+            // Pegar primeiro nome
+            const firstName = userData.name.split(' ')[0];
+            document.getElementById('userName').textContent = firstName;
+        } else {
+            // Se não tiver nome, usar genérico
+            document.getElementById('userName').textContent = 'Confeiteira';
+        }
+
+        function acessarPlanner() {
+            window.location.href = 'Planner-Confeitaria-2026-FINAL.html';
+        }
+    </script>
+</body>
+</html>
